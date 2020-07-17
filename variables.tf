@@ -8,6 +8,9 @@ variable "target_policy_path" {
 variable "access_aws_profile" {}
 variable "access_aws_region" {}
 variable "user_name" {}
+variable "user_path" {
+    default = "/"
+}
 variable "allow_sts_policy_name" {}
 variable "access_group_name" {}
 variable "access_group_path" {

@@ -16,6 +16,7 @@ module "access_setup" {
     aws_profile = var.access_aws_profile
     aws_region = var.access_aws_region
     user_name = var.user_name
+    user_path = var.user_path
     allow_sts_policy_name = var.allow_sts_policy_name
     access_group_name = var.access_group_name
     access_group_path = var.access_group_path

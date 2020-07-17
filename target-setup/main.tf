@@ -28,20 +28,7 @@ resource "aws_iam_policy" "target_policy" {
   path        = var.target_policy_path
   description = "managed by terraform"
   policy      = file("./policies/${var.target_policy_file}")
-#   policy = <<EOF
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#         {
-#             "Effect": "Allow",
-#             "Action": [
-#                 "eks:*" 
-#             ],
-#             "Resource": "*"
-#         }
-#     ]
-# }       
-# EOF
+
 }
 
 
