@@ -2,6 +2,8 @@
 
 the module places user in a group to allow access via STS to the role in target account. in your root module, create a folder `./policies/` to place for your IAM policies definitions in JSON.
 
+for EKS, the 
+
 ## usage example:
 
 ```
