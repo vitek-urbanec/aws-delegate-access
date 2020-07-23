@@ -23,7 +23,10 @@ resource "aws_iam_role" "target_role" {
 EOF
 }
 
-resource "aws_iam_policy" "target_policy" {
+# new policy
+
+resource "aws_iam_policy" "target_policy_new" {
+  count = var.using_managed_policy ? 0 : 1
   name        = var.target_policy_name
   path        = var.target_policy_path
   description = "managed by terraform"
@@ -31,8 +34,35 @@ resource "aws_iam_policy" "target_policy" {
 
 }
 
+resource "aws_iam_role_policy_attachment" "policy_attachment_new" {
+  count = var.using_managed_policy ? 0 : 1
+  role       = aws_iam_role.target_role.name
+  policy_arn = aws_iam_policy.target_policy_new[0].arn
+}
+
+# managed policy
+
+data "aws_iam_policy" "target_policy_managed" {
+  count = var.using_managed_policy ? 1 : 0
+  arn = "arn:aws:iam::aws:policy/${var.managed_policy_name}"
+}
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
+  count = var.using_managed_policy ? 1 : 0
   role       = aws_iam_role.target_role.name
-  policy_arn = aws_iam_policy.target_policy.arn
+  policy_arn = data.aws_iam_policy.target_policy_managed[0].arn
 }
+
+
+# # if
+# resource "aws_iam_user_policy_attachment" "neo_cloudwatch_full" {
+#   count = var.give_neo_cloudwatch_full_access ? 1 : 0
+#   user       = aws_iam_user.example[0].name
+#   policy_arn = aws_iam_policy.cloudwatch_full_access.arn
+# }
+# # else
+# resource "aws_iam_user_policy_attachment" "neo_cloudwatch_read" {
+#   count = var.give_neo_cloudwatch_full_access ? 0 : 1
+#   user       = aws_iam_user.example[0].name
+#   policy_arn = aws_iam_policy.cloudwatch_read_only.arn
+# }

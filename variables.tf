@@ -18,3 +18,7 @@ variable "access_group_path" {
 }
 variable "target_policy_file" {}
 variable "access_account_ID" {}
+variable "using_managed_policy" {}
+variable "managed_policy_name" {
+    default = ""
+}
