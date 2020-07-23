@@ -20,6 +20,7 @@ module "access_setup" {
     # using_managed_policy = var.using_managed_policy
     # managed_policy_name = var.managed_policy_name
     user_name = var.user_name
+    existing_user = var.existing_user
     user_path = var.user_path
     allow_sts_policy_name = var.allow_sts_policy_name
     access_group_name = var.access_group_name

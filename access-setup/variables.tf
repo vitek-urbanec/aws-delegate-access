@@ -5,6 +5,7 @@ variable "access_group_path" {}
 variable "allow_sts_policy_name" {}
 variable "target_policy_arn" {}
 variable "user_name" {}
+variable "existing_user" {}
 variable "user_path" {}
 
 # variable "using_managed_policy" {

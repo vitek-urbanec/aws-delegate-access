@@ -8,6 +8,10 @@ variable "target_policy_path" {
 variable "access_aws_profile" {}
 variable "access_aws_region" {}
 variable "user_name" {}
+variable "existing_user" {
+    type = bool
+    default = false
+}
 variable "user_path" {
     default = "/"
 }

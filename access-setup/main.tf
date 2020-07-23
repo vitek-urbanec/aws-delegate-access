@@ -4,12 +4,17 @@ provider "aws" {
 }
 
 resource "aws_iam_user" "user" {
+
+  count = var.existing_user ? 0 : 1
+
   name = var.user_name
   path = var.user_path
 }
 
 resource "aws_iam_access_key" "user_access_key" {
-  user = aws_iam_user.user.name
+  count = var.existing_user ? 0 : 1
+
+  user = aws_iam_user.user[0].name
 }
 
 
