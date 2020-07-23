@@ -44,7 +44,7 @@ resource "aws_iam_role_policy_attachment" "policy_attachment_new" {
 
 data "aws_iam_policy" "target_policy_managed" {
   count = var.using_managed_policy ? 1 : 0
-  arn = "arn:aws:iam::aws:policy/${var.managed_policy_name}"
+  arn = "arn:aws:iam::aws:policy/${var.target_policy_name}"
 }
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {

@@ -20,7 +20,9 @@ module "aws-delegate-access" {
     user_name = "random.dude"
     allow_sts_policy_name = "eks-management-dev-policy"
     access_group_name = "eks-management-dev-group"
-    access_account_ID = "666666666666"
+    access_account_ID = "6666666666666"
+    using_managed_policy = false
+    managed_policy_name = "AdministratorAccess"
     target_policy_file = "eks_management.json"
 }
 ```
